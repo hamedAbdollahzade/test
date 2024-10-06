@@ -1,4 +1,14 @@
 import "./App.css";
+import fartak from "../public/Fartak_Homepage1.png";
+import LogoFartak from "../public/LogoFartak.png";
+import enamad from "../public/enamad.png";
+import logo1 from "../public/logo1.jpeg";
+import logo2 from "../public/logo2.jpeg";
+import logo3 from "../public/logo3.jpeg";
+import logo4 from "../public/logo4.jpeg";
+import teacher from "../public/teacher.jpg";
+import uni1 from "../public/uni1.jpeg";
+import youtube from "../public/youtube.png";
 
 function App() {
   return (
@@ -34,11 +44,7 @@ function App() {
       <main className="flex flex-col">
         <div className="bg-black h-[70vh] flex flex-col justify-center items-center">
           <div className="overflow-hidden w-full bg-red-200">
-            <img
-              className="w-full h-full"
-              src="/public/Fartak_Homepage1.png"
-              alt=""
-            />
+            <img className="w-full h-full" src={fartak} alt="" />
           </div>
           <div className="w-2/3 p-4 gap-3 mx-auto flex  text-white  justify-center items-start">
             <div>
@@ -69,19 +75,19 @@ function App() {
             <h1 className="border-b-4 border-yellow-400 p-2">دانشگاه ها :</h1>
             <div className="flex justify-center items-center gap-4">
               <div>
-                <img src="https://placehold.co/200" alt="" />
+                <img src={logo1} alt="" />
               </div>
               <div>
-                <img src="https://placehold.co/200" alt="" />
+                <img src={logo2} alt="" />
               </div>
               <div>
-                <img src="https://placehold.co/200" alt="" />
+                <img src={logo3} alt="" />
               </div>
               <div>
-                <img src="https://placehold.co/200" alt="" />
+                <img src={logo4} alt="" />
               </div>
               <div>
-                <img src="https://placehold.co/200" alt="" />
+                <img src={logo1} alt="" />
               </div>
             </div>
           </div>
@@ -175,11 +181,7 @@ function App() {
                         </p>
                       </div>
                       <div className="mx-4">
-                        <img
-                          src="https://placehold.co/200"
-                          className="d-block"
-                          alt="..."
-                        />
+                        <img src={logo2} className="d-block" alt="..." />
                       </div>
                     </div>
                   </div>
@@ -240,16 +242,258 @@ function App() {
           </div>
         </div>
         <div className="h-[80vh] ">
-          <div className="bg-red-600 w-4/5 h-full mx-auto p-4">
-            <h1 className="border-b-2 border-yellow-300 w-fit text-xl font-bold">گزیده مقالات : </h1>
-            <div className="flex gap-x-4"> 
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
+          <div className=" w-4/5 h-full mx-auto p-4">
+            <h1 className="border-b-2 border-yellow-300 w-fit text-xl font-bold">
+              گزیده مقالات :{" "}
+            </h1>
+            <div className="flex w-full justify-center items-center gap-x-4 mt-6">
+              <div className=" flex px-8 gap-8">
+                {/* carts : */}
+                <div className="bg-slate-300  w-80 rounded-lg flex gap-1 flex-col justify-center items-center ">
+                  <div className="w-full">
+                    <img className="rounded-t-lg w-full" src={uni1} alt="" />
+                  </div>
+                  <div className="px-8 py-4  flex flex-col justify-start items-start gap-2">
+                    <h1 className="font-bold text-2xl">{">"} دانشگاه آلبرتا</h1>
+                    <p className="text-sm text-gray-400">
+                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                      و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                      روزنامه و مجله در ستون
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-slate-300  w-80 rounded-lg flex gap-1 flex-col justify-center items-center ">
+                  <div className="w-full">
+                    <img className="rounded-t-lg w-full" src={uni1} alt="" />
+                  </div>
+                  <div className="px-8 py-4  flex flex-col justify-start items-start gap-2">
+                    <h1 className="font-bold text-2xl">{">"} دانشگاه آلبرتا</h1>
+                    <p className="text-sm text-gray-400">
+                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                      و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                      روزنامه و مجله در ستون
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-slate-300  w-80 rounded-lg flex gap-1 flex-col justify-center items-center ">
+                  <div className="w-full">
+                    <img className="rounded-t-lg w-full" src={uni1} alt="" />
+                  </div>
+                  <div className="px-8 py-4  flex flex-col justify-start items-start gap-2">
+                    <h1 className="font-bold text-2xl">{">"} دانشگاه آلبرتا</h1>
+                    <p className="text-sm text-gray-400">
+                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                      و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                      روزنامه و مجله در ستون
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="h-screen">next section</div>
+        <div className="h-[70vh] flex justify-center gap-3 w-4/5 mx-auto ">
+          <div className="flex flex-col gap-2 ">
+            <h1 className="border-b-2 border-green-400 text-2xl font-bold w-fit">
+              {" "}
+              ویدئو ها :{" "}
+            </h1>
+            <div
+              id="carouselExampleIndicators2"
+              className="carousel slide   min-h-fit "
+            >
+              <div className="carousel-indicators ">
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators2"
+                  data-bs-slide-to="0"
+                  className="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators2"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators2"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+              <div className="carousel-inner ">
+                <div className="carousel-item active ">
+                  <div className="flex justify-center items-center">
+                    <img src={youtube} className="w-full" alt="" />
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="flex justify-center items-center">
+                    <img src={youtube} className="w-full" alt="" />
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="flex justify-center items-center">
+                    <img src={youtube} className="w-full" alt="" />
+                  </div>
+                </div>
+              </div>
+              <button
+                className="carousel-control-prev "
+                type="button"
+                data-bs-target="#carouselExampleIndicators2"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleIndicators2"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 ">
+            <h1 className="border-b-2 border-green-400 text-2xl font-bold w-fit">
+              {" "}
+              تصاویر :{" "}
+            </h1>
+            <div
+              id="carouselExampleIndicators3"
+              className="carousel slide  bg-red-700 min-h-[50vh] max-h-[50vh]"
+            >
+              <div className="carousel-indicators ">
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators3"
+                  data-bs-slide-to="0"
+                  className="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators3"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators3"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+              <div className="carousel-inner ">
+                <div className="carousel-item active ">
+                  <div className="w-full max-h-[50vh] flex justify-center items-center">
+                    <img src={teacher} className="object-contain" alt="" />
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="w-full max-h-[50vh] flex justify-center items-center">
+                    <img src={teacher} className="object-contain" alt="" />
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="w-full max-h-[50vh] flex justify-center items-center">
+                    <img src={teacher} className="object-contain" alt="" />
+                  </div>
+                </div>
+              </div>
+              <button
+                className="carousel-control-prev "
+                type="button"
+                data-bs-target="#carouselExampleIndicators3"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleIndicators3"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* footer */}
+        <footer className="h-[50vh] p-20 bg-black flex justify-between items-start text-white">
+          <div className="flex flex-col gap-2 w-36 justify-center items-center">
+            <img src={LogoFartak} alt="" />
+            <p className="text-xs">مشهد - ملک اباد - خیابان بزرگمهر جنوبی</p>
+            <div className="flex justify-center items-center gap-4">
+              <i className="bi bi-facebook"></i>
+              <i className="bi bi-youtube"></i>
+              <i className="bi bi-instagram"></i>
+              <i className="bi bi-whatsapp"></i>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2 justify-center items-end w-44">
+            <img src={enamad} className="w-full" alt="" />
+            <p className="text-xs">
+              {" "}
+              <i className="bi bi-telephone-fill mx-2"></i>تلفن :{" "}
+              <span>37600-05154607</span>
+            </p>
+            <p className="text-xs">
+              {" "}
+              <i className="bi bi-whatsapp mx-2"></i> واتساپ :{" "}
+              <span>09103158201</span>
+            </p>
+            <h6 className="text-xs">info@studyadvisor.ir</h6>
+          </div>
+
+          <div>
+            <ul className="flex flex-col gap-3 w-44">
+              <li>{">"} مشاوره تحصیلی </li>
+              <li>{">"} پذیرش تحصیلی کانادا </li>
+              <li>{">"} ویزای تحصیلی کانادا </li>
+              <li>{">"} ویزای تحصیلی ایتالیا </li>
+            </ul>
+          </div>
+          <div>
+            <ul className="flex flex-col gap-3 w-44">
+              <div className="relative">
+                <i className="bi bi-search absolute right-2 bottom-0 text-black"></i>
+                <input
+                  type="text"
+                  className="pr-7 bg-purple1 rounded-xl"
+                  placeholder="جستجو"
+                />
+              </div>
+              <li>{">"} وقت سفارت امریکا </li>
+              <li>{">"} پیکاپ ویزا </li>
+              <li>{">"} نوت آفیسر </li>
+            </ul>
+          </div>
+        </footer>
       </main>
     </div>
   );
