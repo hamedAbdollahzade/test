@@ -9,7 +9,7 @@ const Home = () => {
       </div>
       <br />
       <div>
-        <Link to={"/createproduct"}> CreateProduct Page</Link>
+        <Link to={"/admin/management/product/create"}> CreateProduct Page</Link>
       </div>
       <br />
       <div>

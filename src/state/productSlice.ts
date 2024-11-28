@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Attribute } from "./attributeSlice";
 import { Price } from "./priceSlice";
 
@@ -14,7 +14,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: [] as Product[],
   reducers: {
-    addProduct: (state, action) => {
+    addProduct: (state, action: PayloadAction<Product>) => {
       state.push(action.payload);
     },
   },
