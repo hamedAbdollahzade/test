@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Price {
-  id: number; // id of the price
-  type: number; // optional
-  name: string; // مثلا قیمت تمام شده یا ...
-  value: number; // قیمتی ک کاربر وارد میکنه
+  id: number;
+  type: number;
+  name: string;
+  value: number;
 }
 
 const priceSlice = createSlice({

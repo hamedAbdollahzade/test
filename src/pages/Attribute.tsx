@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { addattribute } from "../state/attributeSlice";
+import { useState } from "react";
+import { addAttribute, Attribute } from "../state/attributeSlice";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useTypedSelector } from "../main";
 
-const Attribute = () => {
+const Attributes = () => {
   const [name, setName] = useState("");
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const { attribute } = useSelector((state) => state);
+  const { attribute } = useTypedSelector((state) => state);
   // console.log("attribute ==>", attribute);
   return (
     <>
@@ -28,7 +28,9 @@ const Attribute = () => {
       <br />
       <div>
         <button
-          onClick={() => dispatch(addattribute({ name, value }))}
+          onClick={() =>
+            dispatch(addAttribute({ name, value, value_id: 4, id: 5 }))
+          }
           type="button"
         >
           ADD
@@ -48,7 +50,7 @@ const Attribute = () => {
             </tr>
           </thead>
           <tbody>
-            {attribute.map((item) => (
+            {attribute.map((item: Attribute) => (
               <tr>
                 <td key={item.id}>{item.id}</td>
                 <td key={item.id}>{item.name}</td>
@@ -65,4 +67,4 @@ const Attribute = () => {
   );
 };
 
-export default Attribute;
+export default Attributes;

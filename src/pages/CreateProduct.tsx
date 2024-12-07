@@ -1,38 +1,30 @@
 // src/CreateProduct.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../state/productSlice";
-import axios from "axios";
+import { addProduct, Product } from "../state/productSlice";
+import axios, { GenericFormData } from "axios";
 import ReactDropZonePractice from "../components/ReactDropZonePractice";
 import TinyMCEEditor from "../components/TinyMCEEditor";
-import Select from "react-select";
+import FormRepeater from "../components/FormRepeater";
+import { Attribute } from "../state/attributeSlice";
+import { Price } from "../state/priceSlice";
+import { useTypedSelector } from "../main";
 
 const CreateProduct: React.FC = () => {
   const dispatch = useDispatch();
-  const { attribute, price, product } = useSelector((state) => state);
+  const { attribute, price } = useTypedSelector((state) => state);
 
-  const [options, setOptions] = useState([]);
-  const [attributes, setAtributes] = useState([{ attId: "", value: 0 }]);
-
-  // بارگذاری گزینه‌ها از API
-  useEffect(() => {
-    console.log("attribute State ===>", attribute);
-    console.log("price State ===>", price);
-    console.log("product State ===>", product);
-
-    const options = [...attribute, ...price];
-
-    const formattedOptions = options.map((item) => ({
-      value: item.id,
-      label: item.name, // یا هر فیلد دیگری برای نمایش
-    }));
-    setOptions(formattedOptions);
-  }, [attribute, price, product]);
+  const [attributes, setAtributes] = useState<
+    { attId: number; value: number }[]
+  >([{ attId: 0, value: 0 }]);
+  const [attributesPrice, setAtributesPrice] = useState([
+    { attId: 0, value: 0 },
+  ]);
 
   const [productName, setProductName] = useState("");
   const [productId, setProductId] = useState("");
   const [productCategory, setProductCategory] = useState("");
-  const [productPrice, setProductPrice] = useState(0);
+  // const [productPrice, setProductPrice] = useState(0);
 
   const [activeTab, setActiveTab] = useState("general");
   const [disabledButton, setDisabledButton] = useState(false);
@@ -48,24 +40,11 @@ const CreateProduct: React.FC = () => {
     fileInputRef.current = files; // Update the ref with uploaded files
   };
 
-  const handleAddAtribute = () => {
-    setAtributes([...attributes, { attId: "", value: 0 }]);
-  };
-  const handleInputChange = (index, field, value) => {
-    const newattributes = [...attributes];
-    newattributes[index][field] = value;
-    setAtributes(newattributes);
-  };
-  const handleRemoveAttribute = (index) => {
-    const newattributes = attributes.filter((_, i) => i !== index);
-    setAtributes(newattributes);
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisabledButton(true);
 
-    const formData = new FormData(e.target);
+    const formData = new FormData<GenericFormData>(e.target);
 
     // Append uploaded files to the FormData
     fileInputRef.current.forEach((file) => {
@@ -78,7 +57,35 @@ const CreateProduct: React.FC = () => {
       formData.append(`attribute[${index}][value]`, attribute.value);
     });
 
-  
+    // Append Price to FormData
+    attributesPrice.forEach((attribute, index) => {
+      formData.append(`price[${index}][attId]`, attribute.attId);
+      formData.append(`price[${index}][value]`, attribute.value);
+    });
+
+    // Create the product object
+    const product: Product = {
+      id: parseInt(productId), // ID باید به عدد تبدیل شود
+      name: productName,
+      category: productCategory,
+      attribute: attributes.map<Attribute>((attribute) => ({
+        id: attribute.attId, // فرض کنید این ID درست است
+        name: "test",
+        value: attribute.value,
+        value_id: 1111,
+      })),
+      price: attributesPrice.map<Price>((attributePrice) => ({
+        id: attributePrice.attId,
+        type: 1111, // یا هر نوع دیگری که دارید
+        name: "test", // می‌توانید این نام را از نام محصول استفاده کنید
+        value: attributePrice.value,
+      })),
+    };
+
+    console.log("product ====>>>>>>>>>", product);
+
+    // Dispatch the action to Redux
+    dispatch(addProduct(product));
 
     axios({
       method: "POST",
@@ -157,7 +164,7 @@ const CreateProduct: React.FC = () => {
             onChange={(e) => setProductCategory(e.target.value)}
             value={productCategory}
           />
-
+          {/* 
           <input
             type="number"
             name="price"
@@ -165,63 +172,22 @@ const CreateProduct: React.FC = () => {
             value={productPrice}
             onChange={(e) => setProductPrice(parseFloat(e.target.value))}
             required
-          />
+          /> */}
 
           {/* Form Repeater */}
-          <div>
-            <h2>فرم ریپیتر</h2>
-            {attributes.map((attribute, index) => (
-              <div key={index}>
-                {/* <input
-                  key={index}
-                  type="text"
-                  placeholder="نام"
-                  value={input.name}
-                  name={`attribute[name][${index}]`}
-                  onChange={(e) =>
-                    handleInputChange(index, "name", e.target.value)
-                  }
-                /> */}
-                <Select
-                  options={options}
-                  value={options.find(
-                    (option) => option.value === attribute.attId
-                  )}
-                  onChange={(selectedOption) =>
-                    handleInputChange(index, "attId", selectedOption.value)
-                  }
-                  placeholder="محصول خود را انتخاب کنید..."
-                />
-                {/* <input
-                  key={index + "S"}
-                  type="text"
-                  placeholder="رنگ"
-                  name={`attribute[value][${index}]`}
-                  value={input.value}
-                  onChange={(e) =>
-                    handleInputChange(index, "value", e.target.value)
-                  }
-                /> */}
-                <input
-                  type="number"
-                  value={attribute.value}
-                  onChange={(e) =>
-                    handleInputChange(index, "value", parseInt(e.target.value))
-                  }
-                  placeholder="مقدار"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveAttribute(index)}
-                >
-                  حذف
-                </button>
-              </div>
-            ))}
-            <button type="button" onClick={handleAddAtribute}>
-              افزودن ورودی
-            </button>
-          </div>
+          <h2>فرم ریپیتر اتریبیوت</h2>
+          <FormRepeater
+            menu={attribute}
+            attributes={attributes}
+            setAtributes={setAtributes}
+          />
+
+          <h2>فرم ریپیتر قیمت</h2>
+          <FormRepeater
+            menu={price}
+            attributes={attributesPrice}
+            setAtributes={setAtributesPrice}
+          />
           {/* Form Repeater */}
         </div>
       )}

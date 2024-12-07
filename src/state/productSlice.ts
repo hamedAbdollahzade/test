@@ -6,8 +6,8 @@ export interface Product {
   id: number;
   name: string;
   category: string;
-  attribute: Attribute;
-  price: Price;
+  attribute: Attribute[];
+  price: Price[];
 }
 
 const productSlice = createSlice({

@@ -11,11 +11,11 @@ const attributeSlice = createSlice({
   name: "attribute",
   initialState: [] as Attribute[],
   reducers: {
-    addattribute: (state, action: PayloadAction<Attribute>) => {
+    addAttribute: (state, action: PayloadAction<Attribute>) => {
       state.push({ ...action.payload });
     },
   },
 });
 
-export const { addattribute } = attributeSlice.actions;
+export const { addAttribute } = attributeSlice.actions;
 export default attributeSlice;

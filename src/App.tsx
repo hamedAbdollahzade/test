@@ -7,9 +7,10 @@ import Products from "./pages/Products";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
-import { addattribute } from "./state/attributeSlice";
-import { addPrice } from "./state/priceSlice";
-import Attribute from "./pages/Attribute";
+import { addPrice, Price } from "./state/priceSlice";
+import { addAttribute, Attribute } from "./state/attributeSlice";
+import Store from "./pages/Store";
+import Attributes from "./pages/Attribute";
 
 function App() {
   //Address :  Drive D : eshterak / hamed
@@ -23,9 +24,9 @@ function App() {
       });
       console.log("fetchData--dataAttribute === > ", dataAttribute);
       if (dataAttribute) {
-        dataAttribute?.map((data) =>
+        dataAttribute?.map((data: Attribute) =>
           dispatch(
-            addattribute({
+            addAttribute({
               id: data?.id,
               name: data?.name,
               value: 1111,
@@ -41,7 +42,7 @@ function App() {
       });
       console.log("fetchData--Dataprice === > ", dataPrice);
       if (dataPrice) {
-        dataPrice.map((data) =>
+        dataPrice.map((data: Price) =>
           dispatch(
             addPrice({
               id: data?.id,
@@ -64,12 +65,14 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/attribute" element={<Attribute />} />
+          <Route path="/attribute" element={<Attributes />} />
           <Route
             path="/admin/management/product/create"
             element={<CreateProduct />}
           />
           <Route path="/Products" element={<Products />} />
+          <Route path="/calendar" element={"Calendar Page ..."} />
+          <Route path="/store" element={<Store />} />
         </Routes>
       </BrowserRouter>
     </>

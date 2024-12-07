@@ -5,6 +5,8 @@ import userSlice from "./userSlice";
 import productSlice from "./productSlice";
 import priceSlice from "./priceSlice";
 import attributeSlice from "./attributeSlice";
+import warehouseSlice from "./warehouseSlice";
+import storeSlice from "./stores";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     orders: orderSlice.reducer,
     price: priceSlice.reducer,
     attribute: attributeSlice.reducer,
+    store: storeSlice.reducer,
+    warehouses: warehouseSlice.reducer,
   },
 });
 

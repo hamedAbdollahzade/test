@@ -68,7 +68,7 @@ button:focus-visible {
 } */
 * {
   text-align: center;
-  font-size: 1.2rem;
+  /* font-size: 2rem; */
   /* padding: 10px; */
   table,
   th,
